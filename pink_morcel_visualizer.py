@@ -8,13 +8,13 @@ app = Dash(__name__)
 
 app.layout = html.Div([
     html.H1(children='Pink Morcel Sales', style={'textAlign':'center'}),
-    dcc.Dropdown(df.region.unique(), 'north', id='dropdown-selection'),
-    dcc.Graph(id='graph-content')
+    dcc.RadioItems(df.region.unique(), 'north', id='radio-selection'),
+    dcc.Graph(id='graph-content' )
 ])
 
 @callback(
     Output('graph-content', 'figure'),
-    Input('dropdown-selection', 'value')
+    Input('radio-selection', 'value')
 )
 def update_graph(value):
     dff = df[df.region==value]
