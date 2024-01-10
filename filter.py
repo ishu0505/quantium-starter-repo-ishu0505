@@ -26,5 +26,4 @@ print(finalData)
 finalData.to_csv('data/pink_morcel_data.csv', index=False)
 
 
-
 # print(df)
