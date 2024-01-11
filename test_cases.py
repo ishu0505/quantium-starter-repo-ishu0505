@@ -1,20 +1,17 @@
-from contextvars import copy_context
 
-import plotly
-from dash import html
-from dash._callback_context import context_value
-from dash._utils import AttributeDict
-
-# Import the names of callback functions you want to test
-from pink_morcel_visualizer import  update_graph
-
-def test_update_graph_callback():
-    output = update_graph('south')
-
-    print('hello')
-    print(output)
-    print('hello')
-    assert output !=0
+from pink_morcel_visualizer import app
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+def test_header_exists(dash_duo):
+    dash_duo.start_server(app)
+    dash_duo.wait_for_element("#header", timeout=10)
 
 
+def test_visualization_exists(dash_duo):
+    dash_duo.start_server(app)
+    dash_duo.wait_for_element("#graph-content", timeout=10)
 
+
+def test_region_picker_exists(dash_duo):
+    dash_duo.start_server(app)
+    dash_duo.wait_for_element("#radio-selection", timeout=10)

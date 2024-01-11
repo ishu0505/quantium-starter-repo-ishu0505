@@ -7,7 +7,7 @@ df = pd.read_csv('pink_morcel_data.csv')
 app = Dash(__name__)
 
 app.layout = html.Div([
-    html.H1(children='Pink Morcel Sales', style={'textAlign':'center'}),
+    html.H1( id='header' ,children='Pink Morcel Sales', style={'textAlign':'center'}),
     dcc.RadioItems(df.region.unique(), 'north', id='radio-selection'),
     dcc.Graph(id='graph-content' )
 ])
