@@ -18,7 +18,9 @@ app.layout = html.Div([
 )
 def update_graph(value):
     dff = df[df.region==value]
-    return px.line(dff, x='date', y='sales($)')
+    lineGraph =  px.line(dff, x='date', y='sales($)')
+    # print(type(lineGraph))
+    return lineGraph
 
 if __name__ == '__main__':
     app.run(debug=True)
